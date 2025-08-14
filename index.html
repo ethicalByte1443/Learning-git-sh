@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Dynamic Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #4f8cff 0%, #a6ffcb 100%);
+            min-height: 100vh;
+            color: #222;
+        }
+        header {
+            background: rgba(255,255,255,0.85);
+            padding: 2rem 0 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+        header p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        .dynamic-message {
+            background: #fff;
+            padding: 2rem 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            min-width: 300px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        button {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 2rem;
+            background: #4f8cff;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #357ae8;
+        }
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            color: #444;
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Dynamic Landing</h1>
+        <p>Your interactive and modern landing page</p>
+    </header>
+    <main>
+        <div class="dynamic-message" id="dynamicMessage">
+            Hello, visitor! 👋
+        </div>
+        <button id="changeMessageBtn">Show Another Message</button>
+    </main>
+    <footer>
+        &copy; <span id="year"></span> Dynamic Landing. All rights reserved.
+    </footer>
+    <script>
+        const messages = [
+            "Hello, visitor! 👋",
+            "Discover amazing features 🚀",
+            "Join our community today!",
+            "Stay tuned for updates!",
+            "We value your feedback 💬",
+            "Enjoy your stay! 😊"
+        ];
+        let currentIndex = 0;
+        const messageDiv = document.getElementById('dynamicMessage');
+        const btn = document.getElementById('changeMessageBtn');
+
+        btn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % messages.length;
+            messageDiv.textContent = messages[currentIndex];
+            messageDiv.style.background = currentIndex % 2 === 0 ? "#fff" : "#e3f2fd";
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
